@@ -25,7 +25,6 @@ public class Inventory {
 	}
 
 	/**
-	 * @return 
 	 * @return the content
 	 */
 	public Set<Item> getContent() {
