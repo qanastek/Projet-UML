@@ -79,7 +79,7 @@ public class Map {
 
 		Tile tile;
 		
-		for (int i = 1; i < tilesNbr; i++) {
+		for (int i = 0; i < tilesNbr; i++) {
 			
 			// 5% Water
 			if (i < Math.ceil(tilesNbr * TilesDistribution.WATER)) {
@@ -106,13 +106,7 @@ public class Map {
 			
 			for (int j = 0; j < Game.mapSize; j++) {
 				
-				// TODO: Fix out of bound
 				if (indexTilesStack < tilesStack.size()) {
-
-//					System.out.println("i:" + i);
-//					System.out.println("j:" + j);
-//					System.out.println("x:" + indexTilesStack);
-//					System.out.println("size:" + tilesStack.size());
 					
 					Map.matrix[i][j] = tilesStack.get(indexTilesStack);
 					Map.matrix[i][j].setCoordinates(new Point2D(i, j));
@@ -120,11 +114,8 @@ public class Map {
 					indexTilesStack++;
 				}
 				
-			}
-			
+			}			
 		}
-		
-		
 	}	
 
 	@Override
@@ -141,7 +132,7 @@ public class Map {
 			for (int j = 0; j < Game.mapSize; j++) {
 				
 				line += " " + Map.matrix[i][j] + " ";
-//				linePos += " (" + Map.matrix[i][j].getCoordinates().getX() + "," + Map.matrix[i][j].getCoordinates().getY() + ") ";
+				linePos += " (" + Map.matrix[i][j].getCoordinates().getX() + "," + Map.matrix[i][j].getCoordinates().getY() + ") ";
 				
 			}
 			

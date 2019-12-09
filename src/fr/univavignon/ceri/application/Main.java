@@ -12,7 +12,7 @@ public class Main extends Application {
 		try {
 			
 			// Set the title of the window
-			primaryStage.setTitle("Projet UML - V1.1");
+			primaryStage.setTitle("Projet UML - V1.2");
 			
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Gui.fxml"));
 			

@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane minHeight="800.0" minWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="src.fr.univavignon.ceri.application.GuiController">
+<AnchorPane fx:id="root" minHeight="800.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.fr.univavignon.ceri.application.GuiController">
    <children>
-      <Canvas height="800.0" width="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <rotationAxis>
-            <Point3D />
-         </rotationAxis>
-      </Canvas>
+      <Pane fx:id="canvasPane" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: pink;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Canvas fx:id="canvasMap" height="800.0" width="800.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
