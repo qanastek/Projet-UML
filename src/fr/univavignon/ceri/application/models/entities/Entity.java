@@ -33,7 +33,7 @@ public abstract class Entity {
 	protected Entity(String color, int walkStep) {
 		this.inventory = new Inventory();
 		this.color = color;
-		this.coordinates = null;
+		this.coordinates = new Point2D(0.0,0.0);
 		this.walkStep = walkStep;
 	}
 	
@@ -68,4 +68,61 @@ public abstract class Entity {
 	public Boolean attackArround() {
 		return null;
 	}
+
+	/**
+	 * @return the inventory
+	 */
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	/**
+	 * @param inventory the inventory to set
+	 */
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	/**
+	 * @return the color
+	 */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+	 * @param color the color to set
+	 */
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	/**
+	 * @return the coordinates
+	 */
+	public Point2D getCoordinates() {
+		return coordinates;
+	}
+
+	/**
+	 * @param coordinates the coordinates to set
+	 */
+	public void setCoordinates(Point2D coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	/**
+	 * @return the walkStep
+	 */
+	public int getWalkStep() {
+		return walkStep;
+	}
+
+	/**
+	 * @param walkStep the walkStep to set
+	 */
+	public void setWalkStep(int walkStep) {
+		this.walkStep = walkStep;
+	}
+	
 }

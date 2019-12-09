@@ -62,6 +62,7 @@ public class EntityManager {
 	public static Boolean checkHasNoEntity(Point2D pos) {
 		
 		for (Entity entity : EntityManager.entities) {
+
 			if (entity.coordinates.equals(pos)) {
 				return false;
 			}

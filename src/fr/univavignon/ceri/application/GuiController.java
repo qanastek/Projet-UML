@@ -39,7 +39,16 @@ public class GuiController implements Initializable {
 			800
 		);
 		
+		GuiController.render();
+		
+	}
+	
+	/**
+	 * Render all the {@code Entities} and {@code Tiles} present on the {@code Map}
+	 */
+	public static void render() {
 		Draw.drawTiles();
+		Draw.drawEntities();
 	}
 	
 }

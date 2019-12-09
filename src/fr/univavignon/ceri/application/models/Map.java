@@ -55,8 +55,8 @@ public class Map {
 	 */
 	public Point2D getRandomPosition() {
 		
-		int x = (int) (Math.random() * (0 - Game.mapSize - 1));
-		int y = (int) (Math.random() * (0 - Game.mapSize - 1));
+		int x = (int)(Math.random() * (((Game.mapSize - 1) - 0) + 1)) + 0;
+		int y = (int)(Math.random() * (((Game.mapSize - 1) - 0) + 1)) + 0;
 		
 		Point2D p = new Point2D(x,y);
 		

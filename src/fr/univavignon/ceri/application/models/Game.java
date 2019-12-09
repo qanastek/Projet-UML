@@ -82,8 +82,8 @@ public class Game {
 	
 	public static void generateBots() {
 		
-		for (int i = 1; i < Game.qtsEnemy; i++) {
-			
+		for (int i = 0; i < Game.qtsEnemy; i++) {
+						
 			Pirate pirate;
 			
 			// A third
@@ -91,7 +91,7 @@ public class Game {
 				pirate = new Buccaneer();
 			}
 			else {
-				pirate = new Filibuster();				
+				pirate = new Filibuster();	
 			}
 			
 			Game.entityManager.addEntity(pirate);
@@ -106,10 +106,11 @@ public class Game {
 	}	
 	
 	public static void placeEntities() {
-
-		for (Entity entity : Game.entityManager.getEntities()) {
+		
+		for (Entity entity : EntityManager.getEntities()) {
 			Point2D pos = Game.map.getRandomPosition();
 			entity.move(pos);
+			System.out.println("ici placeEntities in Game");
 		}
 		
 	}	
