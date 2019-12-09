@@ -25,4 +25,9 @@ public class Sand extends Tile {
 		super("#eef0d5", true, false, true, true, item);
 	}
 	
+	@Override
+	public String toString() {
+		return "Sand";
+	}
+	
 }

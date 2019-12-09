@@ -25,4 +25,8 @@ public class Water extends Tile {
 		super("#aad3df", false, false, false, false, item);
 	}
 
+	@Override
+	public String toString() {
+		return "Water";
+	}
 }

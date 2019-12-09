@@ -6,8 +6,13 @@ package src.fr.univavignon.ceri.application.models;
 import java.util.Date;
 import java.util.Iterator;
 
+import javafx.geometry.Point2D;
+
+import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
 import src.fr.univavignon.ceri.application.models.entities.EntityManager;
+import src.fr.univavignon.ceri.application.models.entities.Filibuster;
+import src.fr.univavignon.ceri.application.models.entities.Pirate;
 import src.fr.univavignon.ceri.application.models.entities.Player;
 
 /**
@@ -21,15 +26,27 @@ public class Game {
 	public static Date creationDate;
 	public static String name;
 	public static int qtsEnemy;
+	public static int mapSize;
 	public static EntityManager entityManager;
 	public static Map map;
-	public static Player currentPlayer;
 	public static Iterator<Player> iteratorPlayer;
+	public static Player currentPlayer;
 	
 	/**
 	 * Constructor
 	 */
 	private Game() {
+		Game.qtsEnemy = 1;
+		Game.mapSize = 5;
+
+		Game.map = Map.getInstance(Game.mapSize);
+		Map.generateTiles();
+		Game.entityManager = EntityManager.getInstance();
+		Game.generateBots();
+		Game.generatePlayers();
+		Game.placeEntities();
+		
+		System.out.println(Game.map);
 	}
 	
 	/**
@@ -61,6 +78,40 @@ public class Game {
 
 	public static void lose() {
 		// TODO: Lose the game
+	}	
+	
+	public static void generateBots() {
+		
+		for (int i = 1; i < Game.qtsEnemy; i++) {
+			
+			Pirate pirate;
+			
+			// A third
+			if (i < Math.ceil(Game.qtsEnemy * 0.33)) {
+				pirate = new Buccaneer();
+			}
+			else {
+				pirate = new Filibuster();				
+			}
+			
+			Game.entityManager.addEntity(pirate);
+		}
+		
+	}	
+	
+	public static void generatePlayers() {
+		
+		// TODO: Make the body
+		
+	}	
+	
+	public static void placeEntities() {
+
+		for (Entity entity : Game.entityManager.getEntities()) {
+			Point2D pos = Game.map.getRandomPosition();
+			entity.move(pos);
+		}
+		
 	}	
 
 }

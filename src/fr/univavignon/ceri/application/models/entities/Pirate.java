@@ -18,4 +18,8 @@ public abstract class Pirate extends Entity {
 		super(color, coordinates, walkStep);
 	}	
 
+	protected Pirate(String color, int walkStep) {
+		super(color, walkStep);
+	}	
+
 }

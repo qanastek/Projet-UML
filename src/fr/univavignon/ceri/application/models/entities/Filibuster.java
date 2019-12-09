@@ -15,13 +15,19 @@ import src.fr.univavignon.ceri.application.models.items.weapons.Musket;
 public class Filibuster extends Pirate {
 
 	/**
-	 * @param inventory
-	 * @param color
-	 * @param coordinates
-	 * @param walkStep
+	 * Constructor
+	 * @param coordinates {@code Point2D} Starting position
 	 */
-	protected Filibuster(Point2D coordinates) {
+	public Filibuster(Point2D coordinates) {
 		super(EntitiesColors.FILIBUSTER, coordinates, EntityWalkStep.FILIBUSTER);
+		this.inventory.addItem(new Musket());
+	}
+
+	/*
+	 * Constructor without coordinates
+	 */
+	public Filibuster() {
+		super(EntitiesColors.FILIBUSTER, EntityWalkStep.FILIBUSTER);
 		this.inventory.addItem(new Musket());
 	}
 

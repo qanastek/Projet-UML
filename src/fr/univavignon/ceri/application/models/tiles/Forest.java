@@ -24,5 +24,10 @@ public class Forest extends Tile {
 	public Forest(Prop item) {
 		super("#add19e", true, true, true, false, item);
 	}
+	
+	@Override
+	public String toString() {
+		return "Forest";
+	}
 
 }

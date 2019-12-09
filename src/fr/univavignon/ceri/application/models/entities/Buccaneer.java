@@ -16,9 +16,18 @@ public class Buccaneer extends Pirate {
 	
 	/**
 	 * Constructor
+	 * @param coordinates {@code Point2D} Starting coordinates
 	 */
 	public Buccaneer(Point2D coordinates) {
 		super(EntitiesColors.BUCCANEER, coordinates, EntityWalkStep.BUCCANEER);
+		this.inventory.addItem(new Machete());
+	}
+	
+	/**
+	 * Constructor without coordinates
+	 */
+	public Buccaneer() {
+		super(EntitiesColors.BUCCANEER, EntityWalkStep.BUCCANEER);
 		this.inventory.addItem(new Machete());
 	}
 
