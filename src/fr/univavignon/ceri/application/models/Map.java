@@ -109,11 +109,13 @@ public class Map {
 				// TODO: Fix out of bound
 				if (indexTilesStack < tilesStack.size()) {
 
-					System.out.println("i:" + i);
-					System.out.println("j:" + j);
-					System.out.println("x:" + indexTilesStack);
-					System.out.println("size:" + tilesStack.size());
+//					System.out.println("i:" + i);
+//					System.out.println("j:" + j);
+//					System.out.println("x:" + indexTilesStack);
+//					System.out.println("size:" + tilesStack.size());
+					
 					Map.matrix[i][j] = tilesStack.get(indexTilesStack);
+					Map.matrix[i][j].setCoordinates(new Point2D(i, j));
 					
 					indexTilesStack++;
 				}
@@ -129,22 +131,26 @@ public class Map {
 	public String toString() {
 		
 		String matrix = "";
+		String matrixPos = "";
 		
 		for (int i = 0; i < Game.mapSize; i++) {
 			
 			String line = "";
+			String linePos = "";
 			
 			for (int j = 0; j < Game.mapSize; j++) {
 				
 				line += " " + Map.matrix[i][j] + " ";
+//				linePos += " (" + Map.matrix[i][j].getCoordinates().getX() + "," + Map.matrix[i][j].getCoordinates().getY() + ") ";
 				
 			}
 			
 			matrix += line + "\n";
+			matrixPos += linePos + "\n";
 			
 		}
 		
-		return matrix;
+		return matrix + "\n" + matrixPos;
 	}
 
 }

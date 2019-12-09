@@ -1,5 +1,7 @@
 package src.fr.univavignon.ceri.application.models.tiles;
 
+import javafx.geometry.Point2D;
+
 import src.fr.univavignon.ceri.application.models.items.props.Prop;
 
 /**
@@ -14,6 +16,7 @@ public abstract class Tile {
 	protected Boolean active;
 	protected Boolean macheteCanSpawn;
 	protected Prop contain;
+	protected Point2D coordinates;
 	
 	/**
 	 * Full constructor
@@ -181,4 +184,18 @@ public abstract class Tile {
 		this.macheteCanSpawn = macheteCanSpawn;
 	}
 
+	/**
+	 * @return the coordinates
+	 */
+	public Point2D getCoordinates() {
+		return coordinates;
+	}
+
+	/**
+	 * @param coordinates the coordinates to set
+	 */
+	public void setCoordinates(Point2D coordinates) {
+		this.coordinates = coordinates;
+	}
+	
 }
