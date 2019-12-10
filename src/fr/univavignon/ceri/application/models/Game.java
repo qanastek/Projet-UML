@@ -38,8 +38,8 @@ public class Game {
 	private Game() {
 		
 		Game.qtsEnemy = 3;
-		Game.mapSize = 10;
-
+		Game.mapSize = 20;
+s
 		Game.map = Map.getInstance(Game.mapSize);
 		Map.generateTiles();
 		Game.entityManager = EntityManager.getInstance();
