@@ -36,8 +36,9 @@ public class Game {
 	 * Constructor
 	 */
 	private Game() {
-		Game.qtsEnemy = 1;
-		Game.mapSize = 5;
+		
+		Game.qtsEnemy = 3;
+		Game.mapSize = 10;
 
 		Game.map = Map.getInstance(Game.mapSize);
 		Map.generateTiles();

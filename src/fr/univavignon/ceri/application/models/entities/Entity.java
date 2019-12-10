@@ -16,14 +16,14 @@ public abstract class Entity {
 	
 	protected Inventory inventory;
 	protected String color;
-	protected Image texture = Textures.ERROR;
+	protected String texture = Textures.ERROR;
 	protected Point2D coordinates;
 	protected int walkStep;
 
 	/**
 	 * Constructor
 	 */
-	protected Entity(Image img, Point2D coordinates, int walkStep) {
+	protected Entity(String img, Point2D coordinates, int walkStep) {
 		this.inventory = new Inventory();
 		this.texture = img;
 		this.coordinates = coordinates;
@@ -33,7 +33,7 @@ public abstract class Entity {
 	/**
 	 * Constructor without coordinates
 	 */
-	protected Entity(Image img, int walkStep) {
+	protected Entity(String img, int walkStep) {
 		this.inventory = new Inventory();
 		this.texture = img;
 		this.coordinates = new Point2D(0.0,0.0);
@@ -128,11 +128,11 @@ public abstract class Entity {
 		this.walkStep = walkStep;
 	}
 
-	public Image getTexture() {
+	public String getTexture() {
 		return texture;
 	}
 
-	public void setTexture(Image texture) {
+	public void setTexture(String texture) {
 		this.texture = texture;
 	}
 	

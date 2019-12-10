@@ -53,7 +53,7 @@ public class Draw {
 //				);
 				
 				GuiController.gc.drawImage(
-					tile.getTexture(),
+					new Image(Draw.class.getResourceAsStream(tile.getTexture())),
 					xTilePos,
 					yTilePos,
 					tileWidth,
@@ -97,7 +97,7 @@ public class Draw {
 //			);	
 			
 			GuiController.gc.drawImage(
-				entity.getTexture(),
+				new Image(Draw.class.getResourceAsStream(entity.getTexture())),
 				xTilePos,
 				yTilePos,
 				tileWidth,

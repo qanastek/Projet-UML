@@ -1,16 +1,13 @@
 package src.fr.univavignon.ceri.application.config;
 
-import javafx.scene.image.Image;
-import src.fr.univavignon.ceri.application.services.Draw;
-
 public final class Textures {
 
-	public static final Image ERROR = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/sand.jpeg"));
-	public static final Image SAND = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/sand.jpeg"));
-	public static final Image FOREST = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/forest.jpeg"));
-	public static final Image WATER = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/water.jpeg"));
-	public static final Image PLAYER = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/player.jpeg"));
-	public static final Image FILIBUSTER = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/filibuster.jpeg"));
-	public static final Image BUCCANEER = new Image(Draw.class.getResourceAsStream("../ressources/assets/textures/buccaneer.jpeg"));
+	public static final String ERROR = "../ressources/assets/textures/sand.jpeg";
+	public static final String SAND = "../ressources/assets/textures/sand.jpeg";
+	public static final String FOREST = "../ressources/assets/textures/forest.jpeg";
+	public static final String WATER = "../ressources/assets/textures/water.jpg";
+	public static final String PLAYER = "../ressources/assets/textures/player.jpeg";
+	public static final String FILIBUSTER = "../ressources/assets/textures/filibuster.jpeg";
+	public static final String BUCCANEER = "../ressources/assets/textures/buccaneer.jpeg";
 	
 }

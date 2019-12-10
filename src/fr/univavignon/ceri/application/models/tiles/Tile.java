@@ -11,7 +11,7 @@ import src.fr.univavignon.ceri.application.models.items.props.Prop;
 public abstract class Tile {
 	
 	protected String color;
-	protected Image texture = Textures.ERROR;
+	protected String texture = Textures.ERROR;
 	protected Boolean movable;
 	protected Boolean cutable;
 	protected Boolean spawnable;
@@ -23,7 +23,7 @@ public abstract class Tile {
 	/**
 	 * Full constructor
 	 */
-	protected Tile(Image img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn, Prop item) {
+	protected Tile(String img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn, Prop item) {
 		this.texture = img;
 		this.movable = movable;
 		this.cutable = cutable;
@@ -36,7 +36,7 @@ public abstract class Tile {
 	/**
 	 * Constructor without any {@code Item}
 	 */
-	protected Tile(Image img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn) {
+	protected Tile(String img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn) {
 		this.texture = img;
 		this.movable = movable;
 		this.cutable = cutable;
@@ -200,11 +200,11 @@ public abstract class Tile {
 		this.coordinates = coordinates;
 	}
 
-	public Image getTexture() {
+	public String getTexture() {
 		return this.texture;
 	}
 
-	public void setTexture(Image texture) {
+	public void setTexture(String texture) {
 		this.texture = texture;
 	}
 	

@@ -15,11 +15,11 @@ public abstract class Pirate extends Entity {
 	 * @param coordinates
 	 * @param walkStep
 	 */
-	protected Pirate(Image img, Point2D coordinates, int walkStep) {
+	protected Pirate(String img, Point2D coordinates, int walkStep) {
 		super(img, coordinates, walkStep);
 	}	
 
-	protected Pirate(Image img, int walkStep) {
+	protected Pirate(String img, int walkStep) {
 		super(img, walkStep);
 	}	
 
