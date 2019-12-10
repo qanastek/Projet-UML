@@ -7,21 +7,26 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
+	
+	public static Scene scene, mainMenuScene;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			
 			// Set the title of the window
-			primaryStage.setTitle("Projet UML - V1.2");
+			primaryStage.setTitle("Projet UML - V1.3");
 			
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Gui.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/Gui.fxml"));
+			Main.scene = new Scene(root,800,800);
+			Main.scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+			AnchorPane mainMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/MainMenu.fxml"));
+			Main.mainMenuScene = new Scene(mainMenu,800,800);			
 			
-			Scene scene = new Scene(root,800,800);
-			
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
-			primaryStage.setScene(scene);
+			primaryStage.setScene(Main.mainMenuScene);
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

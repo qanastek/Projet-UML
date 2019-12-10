@@ -25,6 +25,8 @@ public class GuiController implements Initializable {
     private Canvas canvasMap;
 	public static GraphicsContext gc;
 	
+	public static Game game;
+	
 	public static Point2D canvasDimensions;
 
 	@Override
@@ -32,14 +34,10 @@ public class GuiController implements Initializable {
 		
 		GuiController.gc = this.canvasMap.getGraphicsContext2D();
 		
-		Game g = Game.getInstance();
-		
 		GuiController.canvasDimensions = new Point2D(
 			800,
 			800
 		);
-		
-		GuiController.render();
 		
 	}
 	
