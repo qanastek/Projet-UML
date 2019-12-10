@@ -18,57 +18,33 @@ import javafx.stage.Stage;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.services.Draw;
 
-public class MainMenuController implements Initializable {
+public class NewGameController implements Initializable {
 
 	@FXML
-    private AnchorPane root;
-	
-	@FXML
+    private Button play;
+
+    @FXML
     private Pane canvasPane;
 
     @FXML
-    private Button start;
-    
-    @FXML
-    private Button newGame;
+    private AnchorPane root;
 
     @FXML
-    private Button loadGame;
-    
-    @FXML
-    private Button exit;
+    private Button back;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		System.out.println("Loaded MainMenu");
-		
+		System.out.println("Loaded NewGame");
 	}
+	
+	@FXML
+    void back(ActionEvent event) {
+		this.switchTo(Main.mainMenuScene);
+    }
 
     @FXML
-    void start(ActionEvent event) {
-
-		GuiController.game = Game.getInstance();
-		
-		GuiController.render();
-		
+    void play(ActionEvent event) {
 		this.switchTo(Main.gameScene);
-    }
-    
-    @FXML
-    void newGame(ActionEvent event) {
-		this.switchTo(Main.newGameScene);
-    }
-
-    @FXML
-    void loadGame(ActionEvent event) {
-		this.switchTo(Main.loadGameScene);
-    }
-
-    @FXML
-    void exit(ActionEvent event) {
-    	Platform.exit();
-        System.exit(0);
     }
     
     /**

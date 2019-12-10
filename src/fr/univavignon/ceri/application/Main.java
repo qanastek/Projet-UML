@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	
-	public static Scene scene, mainMenuScene;
+	public static Scene gameScene, mainMenuScene, newGameScene, loadGameScene;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -18,11 +18,17 @@ public class Main extends Application {
 			primaryStage.setTitle("Projet UML - V1.3");
 			
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/Gui.fxml"));
-			Main.scene = new Scene(root,800,800);
-			Main.scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Main.gameScene = new Scene(root,800,800);
+			Main.gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			AnchorPane mainMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/MainMenu.fxml"));
-			Main.mainMenuScene = new Scene(mainMenu,800,800);			
+			Main.mainMenuScene = new Scene(mainMenu,800,800);
+			
+			AnchorPane newGame = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/LoadGame.fxml"));
+			Main.loadGameScene = new Scene(newGame,800,800);
+			
+			AnchorPane loadGame = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/NewGame.fxml"));
+			Main.newGameScene = new Scene(loadGame,800,800);
 			
 			primaryStage.setScene(Main.mainMenuScene);
 			primaryStage.show();
