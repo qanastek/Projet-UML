@@ -4,6 +4,7 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
+import src.fr.univavignon.ceri.application.config.Textures;
 
 /**
  * @author Yanis Labrak
@@ -19,7 +20,7 @@ public class Player extends Entity {
 	 * @param walkStep
 	 */
 	public Player(String name, Point2D coordinates, int walkStep) {
-		super("#5fba7d", coordinates, walkStep);
+		super(Textures.PLAYER, coordinates, walkStep);
 		this.name = name;
 	}
 	

@@ -1,7 +1,8 @@
 package src.fr.univavignon.ceri.application.models.tiles;
 
 import javafx.geometry.Point2D;
-
+import javafx.scene.image.Image;
+import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.items.props.Prop;
 
 /**
@@ -10,6 +11,7 @@ import src.fr.univavignon.ceri.application.models.items.props.Prop;
 public abstract class Tile {
 	
 	protected String color;
+	protected Image texture = Textures.ERROR;
 	protected Boolean movable;
 	protected Boolean cutable;
 	protected Boolean spawnable;
@@ -21,8 +23,8 @@ public abstract class Tile {
 	/**
 	 * Full constructor
 	 */
-	protected Tile(String color, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn, Prop item) {
-		this.color = color;
+	protected Tile(Image img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn, Prop item) {
+		this.texture = img;
 		this.movable = movable;
 		this.cutable = cutable;
 		this.spawnable = spawnable;
@@ -34,8 +36,8 @@ public abstract class Tile {
 	/**
 	 * Constructor without any {@code Item}
 	 */
-	protected Tile(String color, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn) {
-		this.color = color;
+	protected Tile(Image img, Boolean movable, Boolean cutable, Boolean spawnable, Boolean macheteCanSpawn) {
+		this.texture = img;
 		this.movable = movable;
 		this.cutable = cutable;
 		this.spawnable = spawnable;
@@ -103,7 +105,7 @@ public abstract class Tile {
 	/**
 	 * @return the movable
 	 */
-	public Boolean getMovable() {
+	public Boolean getMovsetColorable() {
 		return movable;
 	}
 
@@ -184,7 +186,7 @@ public abstract class Tile {
 		this.macheteCanSpawn = macheteCanSpawn;
 	}
 
-	/**
+	/**texture
 	 * @return the coordinates
 	 */
 	public Point2D getCoordinates() {
@@ -196,6 +198,14 @@ public abstract class Tile {
 	 */
 	public void setCoordinates(Point2D coordinates) {
 		this.coordinates = coordinates;
+	}
+
+	public Image getTexture() {
+		return this.texture;
+	}
+
+	public void setTexture(Image texture) {
+		this.texture = texture;
 	}
 	
 }

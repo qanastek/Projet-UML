@@ -6,6 +6,7 @@ package src.fr.univavignon.ceri.application.models.entities;
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.config.EntitiesColors;
 import src.fr.univavignon.ceri.application.config.EntityWalkStep;
+import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.items.weapons.Musket;
 
 /**
@@ -19,7 +20,7 @@ public class Filibuster extends Pirate {
 	 * @param coordinates {@code Point2D} Starting position
 	 */
 	public Filibuster(Point2D coordinates) {
-		super(EntitiesColors.FILIBUSTER, coordinates, EntityWalkStep.FILIBUSTER);
+		super(Textures.FILIBUSTER, coordinates, EntityWalkStep.FILIBUSTER);
 		this.inventory.addItem(new Musket());
 	}
 
@@ -27,7 +28,7 @@ public class Filibuster extends Pirate {
 	 * Constructor without coordinates
 	 */
 	public Filibuster() {
-		super(EntitiesColors.FILIBUSTER, EntityWalkStep.FILIBUSTER);
+		super(Textures.FILIBUSTER, EntityWalkStep.FILIBUSTER);
 		this.inventory.addItem(new Musket());
 	}
 

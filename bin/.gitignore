@@ -1,2 +1,6 @@
-/application/
+/.classpath
+/.project
+/.settings/
+/README.md
+/build.fxbuild
 /src/

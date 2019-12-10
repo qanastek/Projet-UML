@@ -4,6 +4,8 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
+import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Inventory;
 
 /**
@@ -14,15 +16,16 @@ public abstract class Entity {
 	
 	protected Inventory inventory;
 	protected String color;
+	protected Image texture = Textures.ERROR;
 	protected Point2D coordinates;
 	protected int walkStep;
 
 	/**
 	 * Constructor
 	 */
-	protected Entity(String color, Point2D coordinates, int walkStep) {
+	protected Entity(Image img, Point2D coordinates, int walkStep) {
 		this.inventory = new Inventory();
-		this.color = color;
+		this.texture = img;
 		this.coordinates = coordinates;
 		this.walkStep = walkStep;
 	}
@@ -30,9 +33,9 @@ public abstract class Entity {
 	/**
 	 * Constructor without coordinates
 	 */
-	protected Entity(String color, int walkStep) {
+	protected Entity(Image img, int walkStep) {
 		this.inventory = new Inventory();
-		this.color = color;
+		this.texture = img;
 		this.coordinates = new Point2D(0.0,0.0);
 		this.walkStep = walkStep;
 	}
@@ -123,6 +126,14 @@ public abstract class Entity {
 	 */
 	public void setWalkStep(int walkStep) {
 		this.walkStep = walkStep;
+	}
+
+	public Image getTexture() {
+		return texture;
+	}
+
+	public void setTexture(Image texture) {
+		this.texture = texture;
 	}
 	
 }

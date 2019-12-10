@@ -3,6 +3,7 @@
  */
 package src.fr.univavignon.ceri.application.models.tiles;
 
+import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.items.props.Prop;
 
 /**
@@ -15,14 +16,14 @@ public class Water extends Tile {
 	 * Constructor
 	 */
 	public Water() {
-		super("#aad3df", false, false, false, false);
+		super(Textures.WATER, false, false, false, false);
 	}
 	
 	/**
 	 * Constructor
 	 */
 	public Water(Prop item) {
-		super("#aad3df", false, false, false, false, item);
+		super(Textures.WATER, false, false, false, false, item);
 	}
 
 	@Override

@@ -110,7 +110,6 @@ public class Game {
 		for (Entity entity : EntityManager.getEntities()) {
 			Point2D pos = Game.map.getRandomPosition();
 			entity.move(pos);
-			System.out.println("ici placeEntities in Game");
 		}
 		
 	}	

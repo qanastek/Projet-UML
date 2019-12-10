@@ -1,6 +1,7 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 
 /**
  * @author Yanis Labrak
@@ -14,12 +15,12 @@ public abstract class Pirate extends Entity {
 	 * @param coordinates
 	 * @param walkStep
 	 */
-	protected Pirate(String color, Point2D coordinates, int walkStep) {
-		super(color, coordinates, walkStep);
+	protected Pirate(Image img, Point2D coordinates, int walkStep) {
+		super(img, coordinates, walkStep);
 	}	
 
-	protected Pirate(String color, int walkStep) {
-		super(color, walkStep);
+	protected Pirate(Image img, int walkStep) {
+		super(img, walkStep);
 	}	
 
 }
