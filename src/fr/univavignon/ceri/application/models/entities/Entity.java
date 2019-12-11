@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
+import src.fr.univavignon.ceri.application.models.Map;
 import src.fr.univavignon.ceri.application.models.tiles.Forest;
 import src.fr.univavignon.ceri.application.models.tiles.Tile;
 import src.fr.univavignon.ceri.application.models.tiles.Water;
@@ -47,8 +48,13 @@ public abstract class Entity {
 	/**
 	 * Move the player to a specific position
 	 */
-	public void move(int x, int y) {
-		this.coordinates= new Point2D(x, y);
+	public void move(double d, double e) {
+
+//		Tile tile = Map.getTile(d,e);
+//		
+//		if (tile.getActive()) {
+//			this.move(tile.getCoordinates());
+//		}
 	}
 	
 	/**

@@ -2,6 +2,7 @@ package src.fr.univavignon.ceri.application.models.tiles;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.entities.Player;
@@ -88,6 +89,23 @@ public abstract class Tile {
 		} else {
 			this.active = false;
 		}
+	}
+	
+	/**
+	 * Return if the Tile contain the Canvas coordinates
+	 */
+	public boolean containCoordinate(Double x, Double y) {
+		
+		Double ratio = GuiController.canvasDimensions.getX() / Game.mapSize;
+		
+		if (x > this.coordinates.getX() + ratio &&
+			x < this.coordinates.getX() &&
+			y > this.coordinates.getY() + ratio &&
+			y < this.coordinates.getY()
+		) {
+			return true;			
+		}
+		return false;
 	}
 	
 	/**

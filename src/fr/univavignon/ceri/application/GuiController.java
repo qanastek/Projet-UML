@@ -48,6 +48,10 @@ public class GuiController implements Initializable {
 			800
 		);
 		
+		this.canvasMap.setOnMouseClicked(event -> {
+			System.out.println("click: " + event.getX() + "," + event.getY());
+//			Game.currentPlayer.move(event.getX(), event.getY());
+		});
 	}
 	
 	@FXML

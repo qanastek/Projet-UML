@@ -6,6 +6,7 @@ package src.fr.univavignon.ceri.application.services;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import src.fr.univavignon.ceri.application.GuiController;
@@ -27,6 +28,8 @@ public class Draw {
 	 */
 	public static void drawTiles() {
 		
+		Pane overlay = new Pane();
+        
 		Double width = GuiController.canvasDimensions.getX();
 		Double height = GuiController.canvasDimensions.getY();
 		
@@ -40,17 +43,6 @@ public class Draw {
 				
 				Double xTilePos = tileWidth * coordinates.getX();
 				Double yTilePos = tileHeight * coordinates.getY();
-				
-//				GuiController.gc.setFill(
-//					Color.web(tile.getColor())
-//				);	
-//				
-//				GuiController.gc.fillRect(
-//					xTilePos,
-//					yTilePos,
-//					tileWidth,
-//					tileHeight
-//				);
 				
 				if (tile.getActive()) {
 					
@@ -73,7 +65,7 @@ public class Draw {
 				}
 				
 			}		
-		}		
+		}
 		
 	}
 	

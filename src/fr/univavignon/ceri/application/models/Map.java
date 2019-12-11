@@ -161,5 +161,19 @@ public class Map {
 		
 		return matrix + "\n" + matrixPos;
 	}
+	
+	/**
+	 * Return the Tile of the coordinates
+	 */
+	public static Tile getTile(Double x, Double y) {
+		for (Tile[] tiles : matrix) {
+			for (Tile tile : tiles) {
+				if (tile.containCoordinate(x,y)) {
+					return tile;
+				}
+			}
+		}
+		return null;
+	}
 
 }
