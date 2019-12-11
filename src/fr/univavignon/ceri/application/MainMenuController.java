@@ -57,12 +57,12 @@ public class MainMenuController implements Initializable {
     
     @FXML
     void newGame(ActionEvent event) {
-		this.switchTo(Main.newGameScene);
+    	this.switchTo(Main.newGameScene);
     }
 
     @FXML
     void loadGame(ActionEvent event) {
-		this.switchTo(Main.loadGameScene);
+    	this.switchTo(Main.loadGameScene);
     }
 
     @FXML
@@ -75,7 +75,7 @@ public class MainMenuController implements Initializable {
 	 * Switch the scene to the Game one
 	 */
 	private void switchTo(Scene scene) {		
-		Stage primaryStage = (Stage) root.getScene().getWindow();
+		Stage primaryStage = (Stage) this.root.getScene().getWindow();
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();

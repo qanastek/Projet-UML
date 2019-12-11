@@ -44,14 +44,14 @@ public class NewGameController implements Initializable {
 
     @FXML
     void play(ActionEvent event) {
-		this.switchTo(Main.gameScene);
+    	this.switchTo(Main.gameScene);
     }
     
     /**
 	 * Switch the scene to the Game one
 	 */
 	private void switchTo(Scene scene) {		
-		Stage primaryStage = (Stage) root.getScene().getWindow();
+		Stage primaryStage = (Stage) this.root.getScene().getWindow();
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();

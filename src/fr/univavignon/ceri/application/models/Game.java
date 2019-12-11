@@ -47,7 +47,7 @@ public class Game {
 		Game.generatePlayers();
 		Game.placeEntities();
 		
-		System.out.println(Game.map);
+//		System.out.println(Game.map);
 	}
 	
 	/**
