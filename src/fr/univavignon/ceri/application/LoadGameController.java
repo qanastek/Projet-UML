@@ -35,6 +35,9 @@ public class LoadGameController implements Initializable {
     private Button back;
     
     @FXML
+    private Button load;
+    
+    @FXML
     private ListView<String> listSaves;
 	
 	@Override
@@ -46,6 +49,19 @@ public class LoadGameController implements Initializable {
     @FXML
     void back(ActionEvent event) {
     	this.switchTo(Main.mainMenuScene);
+    }
+    
+    @FXML
+    void load(ActionEvent event) {
+    	// TODO: Make the save process
+    	int index = this.listSaves.getSelectionModel().getSelectedIndex();
+    	
+    	if (index == -1) {
+    		System.out.println("Nothing selected");
+		} else {
+			System.out.println(this.listSaves.getItems().get(index));
+	    	System.out.println("Load the save selected !");
+		}
     }
     
     /**

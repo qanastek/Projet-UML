@@ -22,6 +22,9 @@ public class EscapeMenuController implements Initializable {
 
 	@FXML
     private Button resume;
+	
+	@FXML
+    private Button save;
 
     @FXML
     private Button cancel;
@@ -48,6 +51,12 @@ public class EscapeMenuController implements Initializable {
     @FXML
     void resume(ActionEvent event) {
     	this.switchTo(Main.gameScene);
+    }
+    
+    @FXML
+    void save(ActionEvent event) {
+    	// TODO: Make the save
+    	System.out.println("Save the game !");
     }
     
     /**
