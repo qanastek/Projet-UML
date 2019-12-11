@@ -95,8 +95,11 @@ public class Game {
 		
 		for (Tile[] line : Map.matrix) {
 			for (Tile tile : line) {
+				
+				int distance = Game.currentPlayer.distance(tile);
+				
 				// If the Player can reach the Tile
-				if (Game.currentPlayer.distance(tile) <= Game.currentPlayer.getWalkStep()) {
+				if (distance <= Game.currentPlayer.getWalkStep()) {
 					tile.toggleActive();
 					i++;
 				}				

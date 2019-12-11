@@ -3,6 +3,8 @@ package src.fr.univavignon.ceri.application.models.tiles;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.config.Textures;
+import src.fr.univavignon.ceri.application.models.Game;
+import src.fr.univavignon.ceri.application.models.entities.Player;
 import src.fr.univavignon.ceri.application.models.items.props.Prop;
 
 /**
@@ -50,8 +52,15 @@ public abstract class Tile {
 	 * Check if the {@code Entity} can walk on the {@code Tile}
 	 */
 	public Boolean canGoOn() {
-		// TODO: Fill up the body
-		return true;
+		if (this instanceof Forest) {
+			if (((Player) Game.currentPlayer).haveMachete()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return true;
+		}
 	}
 	
 	/**

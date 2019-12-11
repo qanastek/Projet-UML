@@ -5,6 +5,8 @@ package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.config.Textures;
+import src.fr.univavignon.ceri.application.models.items.Item;
+import src.fr.univavignon.ceri.application.models.items.weapons.Machete;
 
 /**
  * @author Yanis Labrak
@@ -44,11 +46,33 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * @return If the {@code Player} have a {@code Shovel}
+	 * If the {@code Player} have a {@code Shovel}
+	 * @return
+	 * {@code True} Have one
+	 * <br>
+	 * {@code False} Doesn't have one
 	 */
 	public Boolean haveShovel() {
 		// TODO: Make the body
 		return true;
+	}
+
+	/**
+	 * If the {@code Player} have a {@code Machete}
+	 * @return
+	 * {@code True} Have one
+	 * <br>
+	 * {@code False} Doesn't have one
+	 */
+	public Boolean haveMachete() {
+		
+		for (Item item: this.inventory.getContent()) {
+			if (item instanceof Machete) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	/**

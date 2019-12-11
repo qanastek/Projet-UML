@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
+import src.fr.univavignon.ceri.application.models.tiles.Forest;
 import src.fr.univavignon.ceri.application.models.tiles.Tile;
 import src.fr.univavignon.ceri.application.models.tiles.Water;
 
@@ -66,16 +67,22 @@ public abstract class Entity {
 			return Integer.MAX_VALUE;
 		} else if (tile instanceof Water) {
 			return Integer.MAX_VALUE;
+		} else if (tile instanceof Forest && !tile.canGoOn()) {
+			return Integer.MAX_VALUE;
 		}
 		
-		int x = (int) (this.coordinates.getX() - tile.getCoordinates().getX());
-		int y = (int) (this.coordinates.getY() - tile.getCoordinates().getY());
-		int distance = x - y;
+		int x1 = (int) this.coordinates.getX();
+		int y1 = (int) this.coordinates.getY();
+		
+		int x2 = (int) tile.getCoordinates().getX();
+		int y2 = (int) tile.getCoordinates().getY();
+		
+		int distance = (int) Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
 		
 		if (distance < 0) {
 			distance = -distance;
 		}
-		
+				
 		return distance;		
 	}
 	
