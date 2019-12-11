@@ -36,6 +36,9 @@ public class MainMenuController implements Initializable {
     private Button loadGame;
     
     @FXML
+    private Button credits;
+    
+    @FXML
     private Button exit;
 	
 	@Override
@@ -63,6 +66,11 @@ public class MainMenuController implements Initializable {
     @FXML
     void loadGame(ActionEvent event) {
     	this.switchTo(Main.loadGameScene);
+    }
+    
+    @FXML
+    void credits(ActionEvent event) {
+    	this.switchTo(Main.creditsScene);
     }
 
     @FXML

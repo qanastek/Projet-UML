@@ -22,12 +22,17 @@
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button fx:id="exit" layoutX="185.0" layoutY="375.0" mnemonicParsing="false" onAction="#exit" prefHeight="73.0" prefWidth="430.0" text="EXIT">
+            <Button fx:id="exit" layoutX="185.0" layoutY="481.0" mnemonicParsing="false" onAction="#exit" prefHeight="73.0" prefWidth="430.0" text="EXIT">
                <font>
                   <Font size="40.0" />
                </font>
             </Button>
             <Button fx:id="loadGame" layoutX="185.0" layoutY="267.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="73.0" prefWidth="430.0" text="LOAD GAME">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+            <Button fx:id="credits" layoutX="185.0" layoutY="373.0" mnemonicParsing="false" onAction="#credits" prefHeight="73.0" prefWidth="430.0" text="CREDITS">
                <font>
                   <Font size="40.0" />
                </font>

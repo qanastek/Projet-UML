@@ -6,6 +6,7 @@ package src.fr.univavignon.ceri.application.models.entities;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.config.Textures;
+import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
 
 /**

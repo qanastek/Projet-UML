@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	
-	public static Scene gameScene, mainMenuScene, newGameScene, loadGameScene, escapeMenuScene;
+	public static Scene gameScene, mainMenuScene, newGameScene, loadGameScene, escapeMenuScene, creditsScene;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -33,6 +33,9 @@ public class Main extends Application {
 			
 			AnchorPane escapeMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/EscapeMenu.fxml"));
 			Main.escapeMenuScene = new Scene(escapeMenu,800,800);
+			
+			AnchorPane creditsMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/CreditsMenu.fxml"));
+			Main.creditsScene = new Scene(creditsMenu,800,800);
 			
 			primaryStage.setScene(Main.mainMenuScene);
 			primaryStage.show();

@@ -12,7 +12,7 @@ import src.fr.univavignon.ceri.application.config.Textures;
  */
 public class Player extends Entity {
 	
-	public String name;
+	private String name;
 
 	/**
 	 * @param color
@@ -44,6 +44,20 @@ public class Player extends Entity {
 	public Boolean haveShovel() {
 		// TODO: Make the body
 		return true;
+	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

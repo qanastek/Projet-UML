@@ -29,8 +29,8 @@ public class Game {
 	public static int mapSize;
 	public static EntityManager entityManager;
 	public static Map map;
-	public static Iterator<Player> iteratorPlayer;
-	public static Player currentPlayer;
+	public static int indexPlayer = 0;
+	public static Entity currentPlayer;
 	
 	/**
 	 * Constructor
@@ -64,8 +64,26 @@ public class Game {
 	}
 	
 	public static void nextPlayer() {
-		if (Game.iteratorPlayer.hasNext()) {
-			Game.currentPlayer = Game.iteratorPlayer.next();			
+		
+		if (Game.indexPlayer < EntityManager.entities.size()) {
+			
+			Game.currentPlayer = EntityManager.entities.get(Game.indexPlayer);
+			
+			
+			if (Game.currentPlayer instanceof Player) {
+				System.out.println("Player");
+			} else {
+				System.out.println(Game.currentPlayer.getClass().getSimpleName());
+			}
+
+			Game.indexPlayer++;
+			
+			// If is bot
+			// AutoPlay()
+			
+		} else {
+			Game.indexPlayer = 0;
+			Game.nextPlayer();
 		}
 	}
 	
