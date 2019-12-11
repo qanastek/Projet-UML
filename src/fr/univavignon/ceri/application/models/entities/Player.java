@@ -23,6 +23,11 @@ public class Player extends Entity {
 		super(Textures.PLAYER, coordinates, walkStep);
 		this.name = name;
 	}
+
+	public Player(String name, int walkStep) {
+		super(Textures.PLAYER, walkStep);
+		this.name = name;
+	}
 	
 	/**
 	 * Pick the {@code Item} on the {@code Tile}

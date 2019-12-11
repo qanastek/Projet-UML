@@ -78,7 +78,7 @@ public class Game {
 
 			Game.indexPlayer++;
 			
-			// If is bot
+			// TODO: If is bot
 			// AutoPlay()
 			
 		} else {
@@ -119,8 +119,10 @@ public class Game {
 	}	
 	
 	public static void generatePlayers() {
-		
-		// TODO: Make the body
+
+		Player player;
+		player = new Player("qanastek", 1);	
+		Game.entityManager.addEntity(player);
 		
 	}	
 	
