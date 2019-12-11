@@ -17,6 +17,12 @@
                   <Font size="40.0" />
                </font>
             </Button>
+            <ListView fx:id="listSaves" layoutX="185.0" layoutY="123.0" prefHeight="499.0" prefWidth="430.0" />
+            <Label alignment="CENTER" layoutX="185.0" layoutY="35.0" prefHeight="65.0" prefWidth="430.0" text="LOAD GAME" textAlignment="CENTER">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
