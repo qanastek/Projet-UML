@@ -52,15 +52,25 @@ public class Draw {
 //					tileHeight
 //				);
 				
-				GuiController.gc.drawImage(
-					new Image(Draw.class.getResourceAsStream(tile.getTexture())),
-					xTilePos,
-					yTilePos,
-					tileWidth,
-					tileHeight
-				);
-				
-				
+				if (tile.getActive()) {
+					
+					GuiController.gc.drawImage(
+						new Image(Draw.class.getResourceAsStream(Textures.ACTIVE)),
+						xTilePos,
+						yTilePos,
+						tileWidth,
+						tileHeight
+					);
+					
+				} else {
+					GuiController.gc.drawImage(
+						new Image(Draw.class.getResourceAsStream(tile.getTexture())),
+						xTilePos,
+						yTilePos,
+						tileWidth,
+						tileHeight
+					);
+				}
 				
 			}		
 		}		

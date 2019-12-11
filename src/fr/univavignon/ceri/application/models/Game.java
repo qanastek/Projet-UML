@@ -7,13 +7,14 @@ import java.util.Date;
 import java.util.Iterator;
 
 import javafx.geometry.Point2D;
-
+import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
 import src.fr.univavignon.ceri.application.models.entities.EntityManager;
 import src.fr.univavignon.ceri.application.models.entities.Filibuster;
 import src.fr.univavignon.ceri.application.models.entities.Pirate;
 import src.fr.univavignon.ceri.application.models.entities.Player;
+import src.fr.univavignon.ceri.application.models.tiles.Tile;
 
 /**
  * @author Yanis Labrak
@@ -72,14 +73,15 @@ public class Game {
 			
 			if (Game.currentPlayer instanceof Player) {
 				System.out.println("Player");
-			} else {
+				Game.showMovableTiles(currentPlayer);
+			}
+			else {				
 				System.out.println(Game.currentPlayer.getClass().getSimpleName());
+				
+				// AutoPlay()
 			}
 
 			Game.indexPlayer++;
-			
-			// TODO: If is bot
-			// AutoPlay()
 			
 		} else {
 			Game.indexPlayer = 0;
@@ -88,7 +90,21 @@ public class Game {
 	}
 	
 	public static void showMovableTiles(Entity entity) {
-		// TODO: Make the body
+		
+		int i = 0;
+		
+		for (Tile[] line : Map.matrix) {
+			for (Tile tile : line) {
+				// If the Player can reach the Tile
+				if (Game.currentPlayer.distance(tile) <= Game.currentPlayer.getWalkStep()) {
+					tile.toggleActive();
+					i++;
+				}				
+			}
+		}
+		
+		GuiController.render();
+		System.out.println(i);
 	}
 	
 	public static void win() {

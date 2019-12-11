@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
+import src.fr.univavignon.ceri.application.models.tiles.Tile;
+import src.fr.univavignon.ceri.application.models.tiles.Water;
 
 /**
  * @author Yanis Labrak
@@ -53,6 +55,28 @@ public abstract class Entity {
 	 */
 	public void move(Point2D pos) {
 		this.coordinates= pos; 
+	}
+	
+	/**
+	 * 
+	 */
+	public int distance(Tile tile) {
+		
+		if (EntityManager.checkHasNoEntity(tile.getCoordinates()) == false) {
+			return Integer.MAX_VALUE;
+		} else if (tile instanceof Water) {
+			return Integer.MAX_VALUE;
+		}
+		
+		int x = (int) (this.coordinates.getX() - tile.getCoordinates().getX());
+		int y = (int) (this.coordinates.getY() - tile.getCoordinates().getY());
+		int distance = x - y;
+		
+		if (distance < 0) {
+			distance = -distance;
+		}
+		
+		return distance;		
 	}
 	
 	/**

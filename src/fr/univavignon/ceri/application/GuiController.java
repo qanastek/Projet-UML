@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import src.fr.univavignon.ceri.application.models.Game;
+import src.fr.univavignon.ceri.application.models.Map;
 import src.fr.univavignon.ceri.application.services.Draw;
 
 public class GuiController implements Initializable {
@@ -52,6 +53,7 @@ public class GuiController implements Initializable {
 	@FXML
     void nextPlayer(ActionEvent event) {
 		System.out.println("Next player !");
+		Map.clearActive();
 		Game.nextPlayer();
     }
 	

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.geometry.Point2D;
+import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.TilesDistribution;
 import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
@@ -116,7 +117,24 @@ public class Map {
 				
 			}			
 		}
-	}	
+	}
+	
+	/**
+	 * Clear all the active {@code Tile}
+	 */
+	public static void clearActive() {
+		
+		for (Tile[] tiles : matrix) {
+			for (Tile tile : tiles) {
+				if (tile.getActive()) {
+					tile.toggleActive();
+				}
+			}
+		}
+		
+		GuiController.render();
+
+	}
 
 	@Override
 	public String toString() {

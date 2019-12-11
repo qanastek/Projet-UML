@@ -58,6 +58,10 @@ public class EntityManager {
 	
 	/**
 	 * Check if a entity is already on the {@code Tile}
+	 * @return
+	 * {@code True} Is empty
+	 * <br>
+	 * {@code False} Is not empty
 	 */
 	public static Boolean checkHasNoEntity(Point2D pos) {
 		
