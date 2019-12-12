@@ -55,6 +55,7 @@ public class Draw {
 					);
 					
 				} else {
+					
 					GuiController.gc.drawImage(
 						new Image(Draw.class.getResourceAsStream(tile.getTexture())),
 						xTilePos,

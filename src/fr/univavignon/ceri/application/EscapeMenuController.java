@@ -37,6 +37,9 @@ public class EscapeMenuController implements Initializable {
 
     @FXML
     private Button back;
+    
+    @FXML
+    private Button backSave;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -47,6 +50,12 @@ public class EscapeMenuController implements Initializable {
     void back(ActionEvent event) {
 		this.switchTo(Main.mainMenuScene);
     }
+	
+	@FXML
+    void backSave(ActionEvent event) {
+		this.saveGame();
+		this.switchTo(Main.mainMenuScene);
+    }
     
     @FXML
     void resume(ActionEvent event) {
@@ -55,9 +64,16 @@ public class EscapeMenuController implements Initializable {
     
     @FXML
     void save(ActionEvent event) {
-    	// TODO: Make the save
-    	System.out.println("Save the game !");
+    	this.saveGame();
+		this.switchTo(Main.gameScene);
     }
+    
+    /**
+     * 
+     */
+    private void saveGame() {
+    	System.out.println("Save the game !");
+	}
     
     /**
 	 * Switch the scene to the Game one

@@ -30,7 +30,7 @@ public class Game {
 	public static int mapSize;
 	public static EntityManager entityManager;
 	public static Map map;
-	public static int indexPlayer = 0;
+	public static int currentPlayerIndex = 0;
 	public static Entity currentPlayer;
 	
 	/**
@@ -66,10 +66,9 @@ public class Game {
 	
 	public static void nextPlayer() {
 		
-		if (Game.indexPlayer < EntityManager.entities.size()) {
+		if (Game.currentPlayerIndex < EntityManager.entities.size()) {
 			
-			Game.currentPlayer = EntityManager.entities.get(Game.indexPlayer);
-			
+			Game.currentPlayer = EntityManager.entities.get(Game.currentPlayerIndex);
 			
 			if (Game.currentPlayer instanceof Player) {
 				System.out.println("Player");
@@ -78,13 +77,13 @@ public class Game {
 			else {				
 				System.out.println(Game.currentPlayer.getClass().getSimpleName());
 				
-				// AutoPlay()
+				((Pirate) Game.currentPlayer).autoPlay();
 			}
 
-			Game.indexPlayer++;
+			Game.currentPlayerIndex++;
 			
 		} else {
-			Game.indexPlayer = 0;
+			Game.currentPlayerIndex = 0;
 			Game.nextPlayer();
 		}
 	}

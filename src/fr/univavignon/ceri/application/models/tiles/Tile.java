@@ -132,7 +132,7 @@ public abstract class Tile {
 	/**
 	 * @return the movable
 	 */
-	public Boolean getMovsetColorable() {
+	public Boolean getColorable() {
 		return movable;
 	}
 

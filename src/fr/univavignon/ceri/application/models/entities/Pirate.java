@@ -21,6 +21,13 @@ public abstract class Pirate extends Entity {
 
 	protected Pirate(String img, int walkStep) {
 		super(img, walkStep);
-	}	
+	}
+	
+	/**
+	 * Play automatically
+	 */
+	public void autoPlay() {
+		// TODO: Autoplay the current bot
+	}
 
 }
