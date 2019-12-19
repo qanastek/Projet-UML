@@ -5,6 +5,7 @@ package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
@@ -50,18 +51,20 @@ public abstract class Entity {
 	 */
 	public void move(double d, double e) {
 
-//		Tile tile = Map.getTile(d,e);
-//		
-//		if (tile.getActive()) {
-//			this.move(tile.getCoordinates());
-//		}
+		Tile tile = Map.getTile(d,e);
+		
+		if (tile.getActive()) {
+			this.move(tile.getCoordinates());
+		}
 	}
 	
 	/**
 	 * Move the player to a specific position
 	 */
 	public void move(Point2D pos) {
-		this.coordinates= pos; 
+		this.coordinates = pos; 
+		GuiController.render();
+		Game.nextPlayer();
 	}
 	
 	/**

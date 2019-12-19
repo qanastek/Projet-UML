@@ -166,13 +166,19 @@ public class Map {
 	 * Return the Tile of the coordinates
 	 */	
 	public static Tile getTile(Double x, Double y) {
+
+		Double ratio = GuiController.canvasDimensions.getX() / Game.mapSize;
+		
 		for (Tile[] tiles : matrix) {
 			for (Tile tile : tiles) {
+				
 				if (tile.containCoordinate(x,y)) {
 					return tile;
 				}
+				
 			}
 		}
+		
 		return null;
 	}
 

@@ -88,17 +88,6 @@ public class Draw {
 			Double xTilePos = tileWidth * coordinates.getX();
 			Double yTilePos = tileHeight * coordinates.getY();
 			
-//			GuiController.gc.setFill(
-//				Color.web(entity.getColor())
-//			);	
-			
-//			GuiController.gc.fillRect(
-//				xTilePos,
-//				yTilePos,
-//				tileWidth,
-//				tileHeight
-//			);	
-			
 			GuiController.gc.drawImage(
 				new Image(Draw.class.getResourceAsStream(entity.getTexture())),
 				xTilePos,

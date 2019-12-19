@@ -98,10 +98,10 @@ public abstract class Tile {
 		
 		Double ratio = GuiController.canvasDimensions.getX() / Game.mapSize;
 		
-		if (x > this.coordinates.getX() + ratio &&
-			x < this.coordinates.getX() &&
-			y > this.coordinates.getY() + ratio &&
-			y < this.coordinates.getY()
+		if (x > this.coordinates.getX() * ratio &&
+			x < (this.coordinates.getX() + 1) * ratio &&
+			y > this.coordinates.getY() * ratio &&
+			y < (this.coordinates.getY() + 1) * ratio
 		) {
 			return true;			
 		}

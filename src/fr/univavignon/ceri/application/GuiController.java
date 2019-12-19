@@ -49,8 +49,8 @@ public class GuiController implements Initializable {
 		);
 		
 		this.canvasMap.setOnMouseClicked(event -> {
-			System.out.println("click: " + event.getX() + "," + event.getY());
-//			Game.currentPlayer.move(event.getX(), event.getY());
+			System.out.println("Click: " + event.getX() + "," + event.getY());
+			Game.currentPlayer.move(event.getX(), event.getY());
 		});
 	}
 	
