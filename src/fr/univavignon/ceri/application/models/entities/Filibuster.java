@@ -4,7 +4,6 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
-import src.fr.univavignon.ceri.application.config.EntitiesColors;
 import src.fr.univavignon.ceri.application.config.EntityWalkStep;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.items.weapons.Musket;

@@ -8,13 +8,24 @@ package src.fr.univavignon.ceri.application.models.items.props;
  *
  */
 public class Chest extends Prop {
+	
+	private static Chest instance = null;
 
 	/**
 	 * Constructor
 	 */
-	protected Chest() {
+	private Chest() {
 		super("Make you win the game when you find It !");
 	}
+	
+	public static Chest getInstance() {
+		if (Chest.instance == null) {
+			Chest.instance = new Chest();
+			return Chest.instance;
+		} else {
+			return Chest.instance;
+		}
+	}	
 
 	/*
 	 * When is used, end the game

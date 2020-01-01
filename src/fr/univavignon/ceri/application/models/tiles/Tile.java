@@ -1,11 +1,13 @@
 package src.fr.univavignon.ceri.application.models.tiles;
 
 import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
+import src.fr.univavignon.ceri.application.models.entities.Entity;
+import src.fr.univavignon.ceri.application.models.entities.Pirate;
 import src.fr.univavignon.ceri.application.models.entities.Player;
+import src.fr.univavignon.ceri.application.models.items.Item;
 import src.fr.univavignon.ceri.application.models.items.props.Prop;
 
 /**
@@ -20,7 +22,7 @@ public abstract class Tile {
 	protected Boolean spawnable;
 	protected Boolean active;
 	protected Boolean macheteCanSpawn;
-	protected Prop contain;
+	public Item contain = null;
 	protected Point2D coordinates;
 	
 	/**
@@ -54,12 +56,17 @@ public abstract class Tile {
 	 */
 	public Boolean canGoOn() {
 		if (this instanceof Forest) {
-			if (((Player) Game.currentPlayer).haveMachete()) {
+			
+			if (Game.currentPlayer != null && ((Entity) Game.currentPlayer).haveMachete()) {
 				return true;
 			} else {
 				return false;
-			}
-		} else {
+			}			
+		}
+		else if (this instanceof Water) {
+			return false;
+		}
+		else {
 			return true;
 		}
 	}
@@ -73,11 +80,29 @@ public abstract class Tile {
 	}
 	
 	/**
-	 * Check if a {@code Entity} can spawn the {@code Tile}
+	 * Check if a {@code Item} can spawn on the {@code Tile}
 	 */
 	public Boolean canSpawn() {
-		// TODO: Fill up the body
-		return true;
+		
+		if (this instanceof Forest) {
+			
+			if (this.contain == null) {
+				return true;
+			} else {
+				return false;
+			}
+			
+		}
+		else if (this instanceof Water) {
+			return false;
+		}
+		else {
+			if (this.contain == null) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 	
 	/**
@@ -106,6 +131,23 @@ public abstract class Tile {
 			return true;			
 		}
 		return false;
+	}
+	
+	/**
+	 * Collect and remove the {@code Item} from the {@code Tile}
+	 * @return {@code Item} The collected {@code Item}
+	 */
+	public Item collect() {
+		
+		if (this.contain != null) {
+			
+			Item i = this.contain;
+			this.contain = null;
+			return i;
+			
+		} else {
+			return null;
+		}
 	}
 	
 	/**
@@ -188,14 +230,14 @@ public abstract class Tile {
 	/**
 	 * @return the contain
 	 */
-	public Prop getContain() {
+	public Item getContain() {
 		return contain;
 	}
 
 	/**
 	 * @param contain the contain to set
 	 */
-	public void setContain(Prop contain) {
+	public void setContain(Item contain) {
 		this.contain = contain;
 	}
 

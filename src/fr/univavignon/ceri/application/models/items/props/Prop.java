@@ -44,4 +44,9 @@ public abstract class Prop implements Item {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
+
 }

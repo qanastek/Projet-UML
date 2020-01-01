@@ -4,12 +4,13 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
 import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.Textures;
 import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.Inventory;
 import src.fr.univavignon.ceri.application.models.Map;
+import src.fr.univavignon.ceri.application.models.items.Item;
+import src.fr.univavignon.ceri.application.models.items.weapons.Machete;
 import src.fr.univavignon.ceri.application.models.tiles.Forest;
 import src.fr.univavignon.ceri.application.models.tiles.Tile;
 import src.fr.univavignon.ceri.application.models.tiles.Water;
@@ -45,30 +46,20 @@ public abstract class Entity {
 		this.coordinates = new Point2D(0.0,0.0);
 		this.walkStep = walkStep;
 	}
-	
-	/**
-	 * Move the player to a specific position
-	 */
-	public void move(double d, double e) {
 
-		Tile tile = Map.getTile(d,e);
-		
-		if (tile.getActive()) {
-			this.move(tile.getCoordinates());
-		}
-	}
-	
 	/**
-	 * Move the player to a specific position
+	 * Move the {@code Entity} to a specific position
+	 * @param pos {@code Point2D} The {@code Map} coordinates
 	 */
 	public void move(Point2D pos) {
+		Map.clearActive();
 		this.coordinates = pos; 
 		GuiController.render();
 		Game.nextPlayer();
 	}
 	
 	/**
-	 * 
+	 * Distance between the an {@code Entity} and a {@code Tile}
 	 */
 	public int distance(Tile tile) {
 		
@@ -93,6 +84,59 @@ public abstract class Entity {
 		}
 				
 		return distance;		
+	}
+	
+	/**
+	 * Distance between the an {@code Entity} and a {@code Entity}
+	 */
+	public int distance(Entity entity) {
+		
+		Tile tile = Map.getTile(entity.coordinates);
+		
+		Point2D coor = tile.getCoordinates();
+		boolean hasEntity = EntityManager.checkHasNoEntity(coor);
+		
+		if (hasEntity == false) {
+			return Integer.MAX_VALUE;
+		}
+		else if (tile instanceof Water) {
+			return Integer.MAX_VALUE;
+		}
+		else if (tile instanceof Forest && !tile.canGoOn()) {
+			return Integer.MAX_VALUE;
+		}
+		
+		int x1 = (int) this.coordinates.getX();
+		int y1 = (int) this.coordinates.getY();
+		
+		int x2 = (int) tile.getCoordinates().getX();
+		int y2 = (int) tile.getCoordinates().getY();
+		
+		int distance = (int) Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+		
+		if (distance < 0) {
+			distance = -distance;
+		}
+				
+		return distance;		
+	}
+
+	/**
+	 * If the {@code Player} have a {@code Machete}
+	 * @return
+	 * {@code True} Have one
+	 * <br>
+	 * {@code False} Doesn't have one
+	 */
+	public Boolean haveMachete() {
+		
+		for (Item item: this.inventory.getContent()) {
+			if (item instanceof Machete) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	/**

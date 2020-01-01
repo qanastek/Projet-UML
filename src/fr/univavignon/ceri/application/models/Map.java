@@ -10,11 +10,7 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.config.TilesDistribution;
-import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
-import src.fr.univavignon.ceri.application.models.entities.Entity;
 import src.fr.univavignon.ceri.application.models.entities.EntityManager;
-import src.fr.univavignon.ceri.application.models.entities.Filibuster;
-import src.fr.univavignon.ceri.application.models.entities.Pirate;
 import src.fr.univavignon.ceri.application.models.tiles.Forest;
 import src.fr.univavignon.ceri.application.models.tiles.Sand;
 import src.fr.univavignon.ceri.application.models.tiles.Tile;
@@ -61,7 +57,7 @@ public class Map {
 		
 		Point2D p = new Point2D(x,y);
 		
-		if (EntityManager.checkHasNoEntity(p) == true && Map.matrix[x][y].canSpawn()) {
+		if (EntityManager.checkHasNoEntity(p) == true && Map.matrix[x][y].canGoOn()) {
 			return p;
 		} else {
 			return this.getRandomPosition();
@@ -163,7 +159,7 @@ public class Map {
 	}
 	
 	/**
-	 * Return the Tile of the coordinates
+	 * Return the Tile of the screen coordinates
 	 */	
 	public static Tile getTile(Double x, Double y) {
 
@@ -180,6 +176,45 @@ public class Map {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * Return the Tile of the entity coordinates
+	 */	
+	public static Tile getTile(Point2D coordinates) {
+		
+		for (Tile[] tiles : matrix) {
+			for (Tile tile : tiles) {
+				
+				if (tile.getCoordinates().equals(coordinates)) {
+					return tile;
+				}
+				
+			}
+		}
+		
+		return null;
+	}
+
+	/**
+	 * Return a random {@code Tile} without item on it
+	 */
+	public static Tile randomTileWithoutItem() {
+		
+		int x = (int)(Math.random() * (((Game.mapSize - 1) - 0) + 1)) + 0;
+		int y = (int)(Math.random() * (((Game.mapSize - 1) - 0) + 1)) + 0;
+		
+		Point2D p = new Point2D(x,y);
+		Tile t = Map.getTile(p);
+		
+		// If the item can pop on It and if it doesnt have entity on it
+		if (t.canSpawn() == true && EntityManager.checkHasNoEntity(p)) {
+			return t;
+		}
+		else {
+			return Map.randomTileWithoutItem();
+		}
+		
 	}
 
 }

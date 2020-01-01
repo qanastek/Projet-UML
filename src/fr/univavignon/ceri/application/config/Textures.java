@@ -9,6 +9,6 @@ public final class Textures {
 	public static final String PLAYER = "../ressources/assets/textures/player.jpg";
 	public static final String FILIBUSTER = "../ressources/assets/textures/filibuster.jpeg";
 	public static final String BUCCANEER = "../ressources/assets/textures/buccaneer.jpeg";
-	public static final String ACTIVE = "../ressources/assets/textures/active.jpeg";
+	public static final String ACTIVE = "../ressources/assets/textures/active.png";
 	
 }

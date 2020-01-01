@@ -81,4 +81,9 @@ public abstract class Weapon implements Item {
 	public void setRange(int range) {
 		this.range = range;
 	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
 }

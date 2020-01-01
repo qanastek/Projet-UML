@@ -7,8 +7,6 @@ import javafx.geometry.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.fr.univavignon.ceri.application.models.Game;
-
 /**
  * @author Yanis Labrak
  *
@@ -46,7 +44,7 @@ public class EntityManager {
 	 * @param entity {@code Entity} The entity to insert into the {@code EntityManager}
 	 */
 	public void addEntity(Entity entity) {
-		this.entities.add(entity);
+		EntityManager.entities.add(entity);
 	}
 
 	/**
@@ -65,14 +63,36 @@ public class EntityManager {
 	 */
 	public static Boolean checkHasNoEntity(Point2D pos) {
 		
-		for (Entity entity : EntityManager.entities) {
+		if (EntityManager.entities.size() > 0) {
+			
+			for (Entity entity : EntityManager.entities) {
 
-			if (entity.coordinates.equals(pos)) {
-				return false;
+				if (entity.coordinates.equals(pos)) {
+					return false;
+				}
+			}
+			
+			return true;
+			
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Return the number of players present in the game
+	 */
+	public static int getNbrPlayer() {
+
+		int cpt = 0;
+		
+		for (Entity entity : entities) {
+			if (entity instanceof Player) {
+				cpt++;
 			}
 		}
 		
-		return true;
+		return cpt;
 	}
 
 }

@@ -2,7 +2,6 @@ package src.fr.univavignon.ceri.application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -48,8 +47,13 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * When click on a keyboard key
+	 */
 	private void keyPressedHandler() {
 		Main.gameScene.setOnKeyPressed(e -> {
+			
+			// If this key is ESC
 		    if (e.getCode() == KeyCode.ESCAPE) {
 		        System.out.println("A key was pressed");
 		        Main.switchTo(Main.escapeMenuScene);
