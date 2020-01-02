@@ -11,18 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import src.fr.univavignon.ceri.application.models.Game;
 
-public class EscapeMenuController implements Initializable {
-
-	@FXML
-    private Button resume;
-	
-	@FXML
-    private Button save;
-
-    @FXML
-    private Button cancel;
+public class WinMenuController implements Initializable {
 
     @FXML
     private Pane canvasPane;
@@ -32,9 +22,6 @@ public class EscapeMenuController implements Initializable {
 
     @FXML
     private Button back;
-    
-    @FXML
-    private Button backSave;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -43,25 +30,16 @@ public class EscapeMenuController implements Initializable {
 	
 	@FXML
     void back(ActionEvent event) {
-		this.switchTo(Main.mainMenuScene);
-    }
-	
-	@FXML
-    void backSave(ActionEvent event) {
-		Game.saveGame();
+		this.saveGame();
 		this.switchTo(Main.mainMenuScene);
     }
     
-    @FXML
-    void resume(ActionEvent event) {
-    	this.switchTo(Main.gameScene);
-    }
-    
-    @FXML
-    void save(ActionEvent event) {
-    	Game.saveGame();
-		this.switchTo(Main.gameScene);
-    }
+    /**
+     * 
+     */
+    private void saveGame() {
+    	System.out.println("Save the game !");
+	}
     
     /**
 	 * Switch the scene to the Game one

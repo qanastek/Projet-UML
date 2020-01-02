@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	
-	public static Scene gameScene, mainMenuScene, newGameScene, loadGameScene, escapeMenuScene, creditsScene;
+	public static Scene gameScene, mainMenuScene, newGameScene, loadGameScene, escapeMenuScene, creditsScene, winMenu;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -18,7 +18,7 @@ public class Main extends Application {
 			// Set the title of the window
 			primaryStage.setTitle("Projet UML - V1.3");
 			
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/Gui.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/Game.fxml"));
 			Main.gameScene = new Scene(root,800,800);
 			Main.gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
@@ -36,6 +36,9 @@ public class Main extends Application {
 			
 			AnchorPane creditsMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/CreditsMenu.fxml"));
 			Main.creditsScene = new Scene(creditsMenu,800,800);
+
+			AnchorPane winMenu = (AnchorPane)FXMLLoader.load(getClass().getResource("vues/WinMenu.fxml"));
+			Main.winMenu = new Scene(winMenu,800,800);
 			
 			primaryStage.setScene(Main.mainMenuScene);
 			primaryStage.show();

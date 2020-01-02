@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
@@ -233,14 +235,6 @@ public class Game {
 		System.out.println("-----------------------REUTRN CLSOEST-----------------");
 		System.out.println(closest);
 		return (Player) closest;
-	}
-	
-	public static void win() {
-		// TODO: Win the game
-	}
-
-	public static void lose() {
-		// TODO: Lose the game
 	}	
 	
 	public static void generateBots() {
@@ -369,6 +363,13 @@ public class Game {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+    
+    /**
+     * Save the {@code Game}
+     */
+    public static void saveGame() {
+    	System.out.println("Save the game !");
 	}
 
 }

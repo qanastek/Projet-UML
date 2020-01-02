@@ -55,7 +55,6 @@ public abstract class Entity {
 		Map.clearActive();
 		this.coordinates = pos; 
 		GuiController.render();
-		Game.nextPlayer();
 	}
 	
 	/**
