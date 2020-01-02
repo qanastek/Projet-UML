@@ -36,7 +36,7 @@ public abstract class Pirate extends Entity {
 	 */
 	public void autoPlay() {
 		
-//		System.out.println("Autoplay");
+		System.out.println("Autoplay");
 //		System.out.println(Game.currentPlayer);
 		
 //		Game.sleep(1);
@@ -83,7 +83,6 @@ public abstract class Pirate extends Entity {
 		this.coordinates = pos;
 		// TODO: Attack
 		GuiController.render();
-		Game.pass();
 	}
 
 }

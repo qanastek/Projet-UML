@@ -128,6 +128,7 @@ public class Game {
 				// The current Player entity
 				Game.currentPlayer = EntityManager.entities.get(Game.currentPlayerIndex);			
 				Game.currentPlayerIndex++;
+				((Pirate) Game.currentPlayer).autoPlay();
 			}
 			
 		}
