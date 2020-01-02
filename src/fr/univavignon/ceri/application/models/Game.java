@@ -3,6 +3,10 @@
  */
 package src.fr.univavignon.ceri.application.models;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -10,8 +14,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javafx.geometry.Point2D;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
@@ -401,7 +403,18 @@ public class Game {
      * Save the {@code Game}
      */
     public static void saveGame() {
+    	
     	System.out.println("Save the game !");
+    	
+    	File fichier =  new File("saves/100.sv");
+    	
+    	try {
+			ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+			oos.writeObject(Game.getInstance()); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
 	}
 
 }

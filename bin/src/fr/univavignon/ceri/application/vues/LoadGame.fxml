@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" minHeight="800.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.fr.univavignon.ceri.application.LoadGameController">
+   <children>
+      <Pane fx:id="canvasPane" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="back" layoutX="185.0" layoutY="668.0" mnemonicParsing="false" onAction="#back" prefHeight="73.0" prefWidth="430.0" text="BACK">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+            <ListView fx:id="listSaves" layoutX="185.0" layoutY="123.0" prefHeight="423.0" prefWidth="430.0" />
+            <Label alignment="CENTER" layoutX="185.0" layoutY="35.0" prefHeight="65.0" prefWidth="430.0" text="LOAD GAME" textAlignment="CENTER">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="load" layoutX="185.0" layoutY="566.0" mnemonicParsing="false" onAction="#load" prefHeight="73.0" prefWidth="430.0" text="LOAD">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
