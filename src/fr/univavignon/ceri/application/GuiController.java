@@ -111,8 +111,12 @@ public class GuiController implements Initializable {
 		this.switchTo(Main.mainMenuScene);
 	}
 
-	public void lose() {
-		// TODO: Lose the game
+	/**
+	 * The end game screen when all the {@code Player}'s are dead
+	 */
+	public static void lose() {
+		System.out.println("Every single Player are dead !");
+		Game.sleep(Integer.MAX_VALUE);
 	}
 	
     /**

@@ -11,6 +11,7 @@ import src.fr.univavignon.ceri.application.models.Inventory;
 import src.fr.univavignon.ceri.application.models.Map;
 import src.fr.univavignon.ceri.application.models.items.Item;
 import src.fr.univavignon.ceri.application.models.items.weapons.Machete;
+import src.fr.univavignon.ceri.application.models.items.weapons.Weapon;
 import src.fr.univavignon.ceri.application.models.tiles.Forest;
 import src.fr.univavignon.ceri.application.models.tiles.Tile;
 import src.fr.univavignon.ceri.application.models.tiles.Water;
@@ -92,18 +93,8 @@ public abstract class Entity {
 		
 		Tile tile = Map.getTile(entity.coordinates);
 		
-		Point2D coor = tile.getCoordinates();
-		boolean hasEntity = EntityManager.checkHasNoEntity(coor);
-		
-		if (hasEntity == false) {
-			return Integer.MAX_VALUE;
-		}
-		else if (tile instanceof Water) {
-			return Integer.MAX_VALUE;
-		}
-		else if (tile instanceof Forest && !tile.canGoOn()) {
-			return Integer.MAX_VALUE;
-		}
+//		System.out.println("Tile");
+//		System.out.println(tile.getCoordinates());
 		
 		int x1 = (int) this.coordinates.getX();
 		int y1 = (int) this.coordinates.getY();
@@ -139,21 +130,129 @@ public abstract class Entity {
 	}
 	
 	/**
-	 * Kill the {@code Player}
+	 * Scan for the {@code Entities} around and attack the first one if It as one
+	 * @return
+	 * {@code False} if the attacker lose
+	 * <br>
+	 * {@code True} if the attacker won
 	 */
-	public void die() {
-		// TODO: Make the body of it
+	public Boolean attackArround() {
+
+		// Closest Entity
+		Entity p;
+		
+		// If we are a Player
+		if (this instanceof Player) {
+			p = Game.closestPirate();			
+		}
+		// If we are a Pirate
+		else {
+			p = Game.closestPlayer();
+		}
+		
+		int range = this.calculateRange() + 1;
+		int killingChance = this.calculateKillingChance();
+		boolean diags = this.canAttackOnDiag();
+		
+		System.out.println("pirate");
+		System.out.println(p);
+		
+		System.out.println("range");
+		System.out.println(range);
+		
+		System.out.println("killingChance");
+		System.out.println(killingChance);
+		
+		// If no enemy is around the current player
+		if (p == null) {
+			return true;			
+		}
+		
+		int distance = p.distance(Game.currentPlayer);	
+		
+		// If can touch it
+		if (distance <= range) {
+			
+			int Min = 0;
+			int Max = 100;
+			int randomHit = Min + (int)(Math.random() * ((Max - Min) + 1));
+			System.out.println("Random" + randomHit);
+			
+			// If hit the enemy
+			if (0 <= randomHit && randomHit <= killingChance) {
+				
+				System.out.println(Game.currentPlayer + " won !");
+				
+				EntityManager.kill(p);
+				
+				return true;
+				
+			} else {
+				
+				System.out.println(Game.currentPlayer + " die !");
+
+				EntityManager.kill(Game.currentPlayer);
+				
+				return false;
+			}
+		}
+		else {
+			return true;
+		}
 	}
 	
 	/**
-	 * Scan for the {@code Entities} around and attack the first one if It as one
-	 * @return
-	 * {@code False} if the {@code Player} lose
-	 * <br>
-	 * {@code True} if the {@code Player} won
+	 * Calculate the killing chance of the attack for the {@code Entity}
+	 * @return {@code Integer} The chance
 	 */
-	public Boolean attackArround() {
-		return null;
+	public int calculateKillingChance() {
+		
+		int chance = 0;
+		
+		for (Item item : this.inventory.getContent()) {
+			if (item instanceof Weapon) {
+				chance += ((Weapon) item).getKillChance();
+			}
+		}
+		
+		return chance;
+	}
+
+	/**
+	 * Calculate the range of attack for the {@code Entity}
+	 * @return {@code Integer} The range
+	 */
+	public int calculateRange() {
+		
+		int range = 0;
+		
+		for (Item item : this.inventory.getContent()) {
+			if (item instanceof Weapon && ((Weapon) item).getRange() > range) {
+				range = ((Weapon) item).getRange();
+			}
+		}
+		
+		return range;
+	}
+	
+	/**
+	 * Return if the {@code Entity} can attack on diagonals
+	 * @return
+	 * {@code True}: Can
+	 * <br>
+	 * {@code False}: Cannot
+	 */
+	public boolean canAttackOnDiag() {
+		
+		boolean diag = false;
+		
+		for (Item item : this.inventory.getContent()) {
+			if (item instanceof Weapon && ((Weapon) item).getDiagonals() == true) {
+				diag = true;
+			}
+		}
+		
+		return diag;
 	}
 
 	/**

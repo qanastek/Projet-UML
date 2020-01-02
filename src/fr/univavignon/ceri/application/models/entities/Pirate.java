@@ -1,5 +1,7 @@
 package src.fr.univavignon.ceri.application.models.entities;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.models.Game;
@@ -36,6 +38,11 @@ public abstract class Pirate extends Entity {
 	 */
 	public void autoPlay() {
 		
+		// Check if has Player left alive
+		if (EntityManager.checkHasPlayerLeft() == false) {
+			GuiController.lose();
+		}
+		
 		System.out.println("Autoplay");
 //		System.out.println(Game.currentPlayer);
 		
@@ -64,11 +71,31 @@ public abstract class Pirate extends Entity {
 			
 //			Game.sleep(1);
 			Game.showMovableTiles(Game.currentPlayer);
-			((Pirate) Game.currentPlayer).move(closest.getCoordinates());
+
+			// Attack
+			boolean alive = this.attackArround();
+			
+			if (alive == true) {
+				((Pirate) Game.currentPlayer).move(closest.getCoordinates());
+			} else {
+				Game.pass();
+			}
 			
 		} else {
-			((Pirate) Game.currentPlayer).move(Game.getMovableTiles().get(0).getCoordinates());
+
+			// Attack
+			boolean alive = this.attackArround();
+			
+			if (alive == true) {
+				((Pirate) Game.currentPlayer).move(Game.getMovableTiles().get(0).getCoordinates());
+			} else {
+				Game.pass();
+			}		
 		}
+	     
+		Platform.runLater(() -> {
+     		GuiController.render();
+		});
 		
 		Game.pass();
 	}
@@ -81,7 +108,7 @@ public abstract class Pirate extends Entity {
 	public void move(Point2D pos) {	
 		Map.clearActive();
 		this.coordinates = pos;
-		// TODO: Attack
+		
 		GuiController.render();
 	}
 

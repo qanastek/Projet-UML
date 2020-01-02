@@ -95,4 +95,30 @@ public class EntityManager {
 		return cpt;
 	}
 
+	/**
+	 * Check if has {@code Player} alive
+	 * @return
+	 * {@code True}: Left alive
+	 * <br>
+	 * {@code False} All dead
+	 */
+	public static boolean checkHasPlayerLeft() {
+		
+		for (Entity entity : entities) {
+			if (entity instanceof Player) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Kill the {@code Entity}
+	 */
+	public static void kill(Entity entity) {
+		EntityManager.getInstance();
+		EntityManager.getEntities().remove(entity);
+	}
+
 }

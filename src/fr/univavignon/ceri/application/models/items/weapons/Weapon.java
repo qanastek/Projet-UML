@@ -10,18 +10,22 @@ import src.fr.univavignon.ceri.application.models.items.Item;
  */
 public abstract class Weapon implements Item {
 
-	/*
-	 * Chance to kill the enemy
+	/**
+	 * Chance to kill the {@code Pirate}
 	 */
 	protected int killChance;
 	
-	/*
+	/**
 	 * Does this weapons can hit on diagonals
+	 * <br>
+	 * {@code True}: Can
+	 * <br>
+	 * {@code False}: Cannot
 	 */
 	protected Boolean diagonals;
 	
-	/*
-	 * The hit range of the weapon
+	/**
+	 * The hit range of the {@code Weapon}
 	 */
 	protected int range;
 	

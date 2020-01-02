@@ -233,10 +233,41 @@ public class Game {
 			}
 		}
 
-		System.out.println("-----------------------REUTRN CLSOEST-----------------");
-		System.out.println(closest);
+//		System.out.println("-----------------------REUTRN CLOSEST PLAYER -----------------");
+//		System.out.println(closest);
 		return (Player) closest;
-	}	
+	}
+	
+
+	/**
+	 * Return the closest {@code Pirate}
+	 * @return {@code Pirate}
+	 */
+	public static Pirate closestPirate() {
+		
+		Entity closest = null;
+		int bestDistance = Integer.MAX_VALUE;
+		int distance = 0;
+		
+		Iterator<Entity> it = EntityManager.entities.iterator();
+		      
+		while(it.hasNext()) {
+			
+			Entity entity = it.next();
+			
+			distance = Game.currentPlayer.distance(entity);
+
+			// If the distance is better
+			if (entity instanceof Pirate && distance < bestDistance) {
+				bestDistance = distance;
+				closest = entity;
+			}
+		}
+
+//		System.out.println("-----------------------REUTRN CLOSEST PIRATE -----------------");
+//		System.out.println(closest);
+		return (Pirate) closest;
+	}
 	
 	public static void generateBots() {
 		

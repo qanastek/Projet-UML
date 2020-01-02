@@ -59,14 +59,23 @@ public class Player extends Entity {
 		if (tile.getActive()) {
 
 			// TODO: Attack()
+			boolean alive = this.attackArround();
 			
-			// Move
-			this.move(tile.getCoordinates());
+			// If not dead
+			if (alive == true) {
 
-			// TODO: Collect()
-			this.collect(tile);
-			System.out.println("***** Inventory *****");
-			System.out.println(this.inventory.toString());
+				// Move
+				this.move(tile.getCoordinates());
+
+				// TODO: Collect()
+				this.collect(tile);
+				System.out.println("***** Inventory *****");
+				System.out.println(this.inventory.toString());
+				
+			} else {
+				Game.nextPlayer();
+			}
+			
 		}
 	}
 	
