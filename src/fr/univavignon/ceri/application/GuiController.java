@@ -94,6 +94,11 @@ public class GuiController implements Initializable {
 	
 	@FXML
     void nextPlayer(ActionEvent event) {
+		
+		if (this.nextPlayer.getText().equals("START") == true) {
+			this.nextPlayer.setText("NEXT PLAYER");
+		}
+		
 		Game.nextPlayer();
     }
 	

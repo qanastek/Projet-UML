@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.GuiController;
 import src.fr.univavignon.ceri.application.NewGameController;
@@ -53,13 +54,8 @@ public class Game {
 	 */
 	private Game() {
 		
-		Game.qtsEnemy = 3;
-		
-//		Game.mapSize = 10;
-		System.out.println("Taille");
-		System.out.println(NewGameController.selectedMapSize);
+		Game.qtsEnemy = NewGameController.selectedDifficulty.nbrPirates;
 		Game.mapSize = NewGameController.selectedMapSize.nbrTiles;
-
 		Game.map = Map.getInstance(Game.mapSize);
 		Map.generateTiles();
 		Game.entityManager = EntityManager.getInstance();
@@ -68,8 +64,6 @@ public class Game {
 		Game.placeEntities();
 		Game.placeIntems();
 		Game.status = true;
-		
-//		System.out.println(Game.map);
 	}
 	
 	/**
@@ -82,6 +76,15 @@ public class Game {
 			return instance;
 		} else {
 			return instance;
+		}
+	}
+	
+	/**
+	 * Delete the previous instance
+	 */
+	public static void destroyInstance() {
+		if (Game.instance != null) {
+			Game.instance = null;
 		}
 	}
 	
@@ -102,7 +105,11 @@ public class Game {
 			// If the current player is a real player
 			if (Game.currentPlayer instanceof Player) {
 				System.out.println("-------------------- Player");
-				Game.showMovableTiles(currentPlayer);
+				
+				Platform.runLater(() -> {
+					Game.showMovableTiles(currentPlayer);
+		    		GuiController.render();
+				});
 			}
 			// If its a bot
 			else {				
@@ -115,11 +122,19 @@ public class Game {
 		// Else return to the start of the list
 		else {
 			Game.currentPlayerIndex = 0;
-			Game.nextPlayer();
+			
+			Platform.runLater(() -> {
+	    		GuiController.render();
+				Game.nextPlayer();
+			});
 		}
 	}
 	
 	public static void pass() {
+		
+		if (Game.status == false) {
+			return;
+		}
 		
 		Map.clearActive();
 		
@@ -142,7 +157,10 @@ public class Game {
 		// Else return to the start of the list
 		else {
 			Game.currentPlayerIndex = 0;
-			Game.pass();
+			Platform.runLater(() -> {
+	    		GuiController.render();
+	    		Game.pass();
+			});
 		}
 	}
 	

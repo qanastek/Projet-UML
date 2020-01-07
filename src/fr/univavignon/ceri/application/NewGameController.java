@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import src.fr.univavignon.ceri.application.models.Difficulty;
+import src.fr.univavignon.ceri.application.models.Game;
 import src.fr.univavignon.ceri.application.models.MapSize;
 
 public class NewGameController implements Initializable {

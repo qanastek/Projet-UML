@@ -78,7 +78,13 @@ public abstract class Pirate extends Entity {
 			if (alive == true) {
 				((Pirate) Game.currentPlayer).move(closest.getCoordinates());
 			} else {
-				Game.pass();
+			     
+				Platform.runLater(() -> {
+					System.out.println("refresh");
+		     		GuiController.render();
+					
+					Game.pass();
+				});
 			}
 			
 		} else {
@@ -89,15 +95,21 @@ public abstract class Pirate extends Entity {
 			if (alive == true) {
 				((Pirate) Game.currentPlayer).move(Game.getMovableTiles().get(0).getCoordinates());
 			} else {
-				Game.pass();
+			     
+				Platform.runLater(() -> {
+					System.out.println("refresh");
+		     		GuiController.render();
+					
+					Game.pass();
+				});
 			}		
 		}
 	     
 		Platform.runLater(() -> {
-     		GuiController.render();
+    		GuiController.render();
+    		Game.pass();
 		});
 		
-		Game.pass();
 	}
 
 	/**
