@@ -3,8 +3,6 @@ package src.fr.univavignon.ceri.application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import fr.univavignon.ceri.deskmap.controllers.MainViewController;
-import fr.univavignon.ceri.deskmap.models.line.Road;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -40,10 +38,10 @@ public class NewGameController implements Initializable {
     private Button back;
     
     @FXML
-    private ComboBox<Difficulty> difficulty;
+    private ComboBox<Difficulty> difficulty =  new ComboBox<Difficulty>();
 
     @FXML
-    private ComboBox<MapSize> mapSize;
+    private ComboBox<MapSize> mapSize =  new ComboBox<MapSize>();
     
     public static Difficulty selectedDifficulty;
     public static MapSize selectedMapSize;
@@ -53,23 +51,29 @@ public class NewGameController implements Initializable {
 	
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+    	
     	/**
     	 * Add difficulties to the comboBox
     	 */
-    	this.difficulty.setItems(NewGameController.listDifficulties);
-    	NewGameController.listDifficulties.add(new Difficulty("Easy", 2));
-    	NewGameController.listDifficulties.add(new Difficulty("Medium", 3));
-    	NewGameController.listDifficulties.add(new Difficulty("Hard", 4));
-    	NewGameController.listDifficulties.add(new Difficulty("God Of War", 5));
+    	NewGameController.listDifficulties.setAll(
+    		new Difficulty("Easy", 2),
+	    	new Difficulty("Medium", 3),
+	    	new Difficulty("Hard", 4),
+	    	new Difficulty("God Of War", 5)
+    	);
+    	this.difficulty.getItems().addAll(NewGameController.listDifficulties);
 
     	/**
     	 * Add map sizes to the comboBox
     	 */
-    	this.mapSize.setItems(NewGameController.listMapSizes);
-    	NewGameController.listMapSizes.add(new MapSize("5 x 5", 5));
-    	NewGameController.listMapSizes.add(new MapSize("10 x 10", 10));
-    	NewGameController.listMapSizes.add(new MapSize("15 x 15", 15));    	
+    	NewGameController.listMapSizes.setAll(
+			new MapSize("5 x 5", 5),
+	    	new MapSize("10 x 10", 10),
+	    	new MapSize("15 x 15", 15)
+    	);
+    	this.mapSize.getItems().addAll(NewGameController.listMapSizes);
+    	
+    	System.out.println("Loaded");
 	}
     
 	@FXML
