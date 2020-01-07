@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import javafx.geometry.Point2D;
 import src.fr.univavignon.ceri.application.GuiController;
+import src.fr.univavignon.ceri.application.NewGameController;
 import src.fr.univavignon.ceri.application.models.entities.Buccaneer;
 import src.fr.univavignon.ceri.application.models.entities.Entity;
 import src.fr.univavignon.ceri.application.models.entities.EntityManager;
@@ -53,7 +54,11 @@ public class Game {
 	private Game() {
 		
 		Game.qtsEnemy = 3;
-		Game.mapSize = 10;
+		
+//		Game.mapSize = 10;
+		System.out.println("Taille");
+		System.out.println(NewGameController.selectedMapSize);
+		Game.mapSize = NewGameController.selectedMapSize.nbrTiles;
 
 		Game.map = Map.getInstance(Game.mapSize);
 		Map.generateTiles();
