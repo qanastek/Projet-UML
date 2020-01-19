@@ -1,4 +1,5 @@
 # Projet-UML
 
-Capdepon Quentin
-Labrak Yanis
+Author: Labrak Yanis
+
+![Preview](release/preview.PNG)
